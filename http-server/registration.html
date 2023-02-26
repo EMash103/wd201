@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        .form-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 20px;
+        }
+    
+        form {
+          width: 400px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 20px;
+          border: 1px solid gray;
+          border-radius: 20px;
+        }
+    
+        label, input[type="submit"] {
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 10px;
+          font-size: 20px;
+        }
+    
+        input[type="text"], input[type="email"], input[type="password"], input[type = "date"], input[type = checkbox] {
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 20px;
+          font-size: 16px;
+        }
+
+        #data-table-body {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 14px;
+  
+  
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: lightgray;
+}
+      </style>
+<head>
+  <title>Form Data Table</title>
+</head>
+
+<body>
+<div class = "form-container">
+  <h2>Registration Form</h2>
+
+  <form id="registration-form">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <label for="dob">Date of Birth: </label>
+    <input type = "date" id="dob" name = "dob" min ="1968-02-13" max ="2005-02-13" required>
+
+    <label for ="acceptTerms">Accept Terms and Conditons: </label>
+    <input type = "checkbox" id = "acceptTerms" name = "acceptTerms">
+
+    <input type="submit" value="Submit">
+  </form>
+
+</div>
+
+  <h2>Entries</h2>
+
+  <table id="data-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Dob</th>
+        <th>Accepted Terms?</th>
+      </tr>
+    </thead>
+    <tbody id="data-table-body">
+    </tbody>
+  </table>
+
+  <script>
+    const form = document.getElementById("registration-form");
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const dob = document.getElementById("dob").value;
+      const acceptTerms = document.getElementById("acceptTerms").checked;
+
+      const formData = { name, email, password , dob, acceptTerms};
+
+      let data = [];
+      if (localStorage.getItem("formData")) {
+        data = JSON.parse(localStorage.getItem("formData"));
+      }
+      data.push(formData);
+      localStorage.setItem("formData", JSON.stringify(data));
+
+      displayData();
+    });
+
+    function displayData() {
+      const data = JSON.parse(localStorage.getItem("formData"));
+      const tableBody = document.getElementById("data-table-body");
+      tableBody.innerHTML = "";
+
+      for (const formData of data) {
+        const row = document.createElement("tr");
+
+        const nameCell = document.createElement("td");
+        nameCell.innerText = formData.name;
+        row.appendChild(nameCell);
+
+        const emailCell = document.createElement("td");
+        emailCell.innerText = formData.email;
+        row.appendChild(emailCell);
+
+        const passwordCell = document.createElement("td");
+        passwordCell.innerText = formData.password;
+        row.appendChild(passwordCell);
+
+        const dobCell = document.createElement("td");
+        dobCell.innerText = formData.dob;
+        row.appendChild(dobCell);
+
+        const acceptTermsCell = document.createElement("td");
+        acceptTermsCell.innerText = formData.acceptTerms;
+        row.appendChild(acceptTermsCell);
+
+        tableBody.appendChild(row);
+      }
+    }
+
+    displayData();
+  </script>
+
+</body>
+</html>
