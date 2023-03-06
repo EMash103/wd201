@@ -22,14 +22,17 @@ const todoList = () => {
   }
 
   const dueToday = () => {
-  let due = [];
-  let n = all.length
-  for( let i =0; i<n ; i++){
-      let d = all[i];
-      if (d.dueDate == today){
-          delete d.dueDate;
-          due.push(d);
-      }
+    let due = [];
+    let n = all.length
+    for( let i =0; i<n ; i++){
+        let d = all[i];
+        if (d.dueDate == today){
+            delete d.dueDate;
+            due.push(d);
+        }
+
+    // Write the date check condition here and return the array
+    // of todo items that are due today accordingly.
   }
   return due;
 }
@@ -50,33 +53,33 @@ const todoList = () => {
   return late;
 }
 
-  const toDisplayableList = (list) => {
-    output = '';
-    n = list.length;
-    for(i=0;i<n;i++){
-        if(list.dueDate != today){
-            if(list[i].completed == true){
-                output += '[x] ' + list[i].title + ' ' + list[i].dueDate + '\n'
-            }
-            else{
-                output += '[ ] ' + list[i].title + ' ' + list[i].dueDate + '\n'
-            }
+const toDisplayableList = (list) => {
+    let output = '';
+    let n = list.length;
+    for(let i=0;i<n;i++){
+      if(list[i].dueDate && list[i].dueDate != today){
+        if(list[i].completed == true){
+          output += '[x] ' + list[i].title + ' ' + list[i].dueDate + '\n';
+        } else{
+          output += '[ ] ' + list[i].title + ' ' + list[i].dueDate + '\n';
         }
-        else{
-            if(list[i].completed == true){
-                output += '[x] ' + list[i].title + '\n'
-            }
-            else{
-                output += '[ ] ' + list[i].title +'\n'
+      } else{
+        if(list[i].completed == true){
+          output += '[x] ' + list[i].title + '\n';
+        } else{
+          output += '[ ] ' + list[i].title + '\n';
         }
-
-}}
+      }
+    }
     return output;
-    
-    // Format the To-Do list here, and return the output string
-    // as per the format given above.
-  }
-
+  };
+ 
+  
+  
+  
+  
+  
+  
   return {
     all,
     add,
