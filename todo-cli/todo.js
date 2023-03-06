@@ -54,31 +54,31 @@ const todoList = () => {
 }
 
 const toDisplayableList = (list) => {
-    let output = '';
-    let n = list.length;
-    for(let i=0;i<n;i++){
-      if(list[i].dueDate && list[i].dueDate != today){
-        if(list[i].completed == true){
-          output += '[x] ' + list[i].title + ' ' + list[i].dueDate + '\n';
-        } else{
-          output += '[ ] ' + list[i].title + ' ' + list[i].dueDate + '\n';
-        }
+  let output = '';
+  const n = list.length;
+  for(let i = 0; i < n; i++){
+    if(list[i].dueDate != today){
+      if(list[i].completed == true){
+        output += '[x] ' + list[i].title + ' ' + list[i].dueDate;
       } else{
-        if(list[i].completed == true){
-          output += '[x] ' + list[i].title + '\n';
-        } else{
-          output += '[ ] ' + list[i].title + '\n';
-        }
+        output += '[ ] ' + list[i].title + ' ' + list[i].dueDate;
       }
-      if(i !== n - 1) {
-      output += '\n';
+      if(i < n - 1){
+        output += '\n';
+      }
+    } else{
+      if(list[i].completed == true){
+        output += '[x] ' + list[i].title;
+      } else{
+        output += '[ ] ' + list[i].title;
+      }
+      if(i < n - 1){
+        output += '\n';
+      }
     }
-    }
-    return output;
-  };
- 
-  
-  
+  }
+  return output;
+};
   
   
   
