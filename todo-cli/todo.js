@@ -57,7 +57,7 @@ const toDisplayableList = (list) => {
   let output = '';
   const n = list.length;
   for(let i = 0; i < n; i++){
-    if(list[i].dueDate != today){
+    if(list[i].dueDate !== undefined && list[i].dueDate != today){
       if(list[i].completed == true){
         output += '[x] ' + list[i].title + ' ' + list[i].dueDate;
       } else{
@@ -79,9 +79,10 @@ const toDisplayableList = (list) => {
   }
   return output;
 };
-  
-  
-  
+
+
+
+
   
   return {
     all,
