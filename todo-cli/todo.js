@@ -9,7 +9,7 @@ const todoList = () => {
 
   const overdue = () => {
     let over = [];
-    let n = all.length
+    let n = all.length()
     for( let i =0; i<n ; i++){
         let d = all[i].dueDate;
         if (d == yesterday){
@@ -39,7 +39,7 @@ const todoList = () => {
 
   const dueLater = () => {
     let late = [];
-    let n = all.length
+    let n = all.length()
     for( let i =0; i<n ; i++){
         let d = all[i];
         if (d.dueDate == tomorrow){
@@ -54,18 +54,27 @@ const todoList = () => {
 }
 
   const toDisplayableList = (list) => {
-    output = ''
-    n = list.length;
+    output = '';
+    n = list.length();
     for(i=0;i<n;i++){
-        if(list[i].completed == true){
-        output += '[x] ' + list[i].title + ' ' + list[i].dueDate + '\n';
+        if(list.dueDate != today){
+            if(list[i].completed == true){
+                output += '[x] ' + list[i].title + ' ' + list[i].dueDate + '\n'
+            }
+            else{
+                output += '[ ] ' + list[i].title + ' ' + list[i].dueDate + '\n'
+            }
         }
         else{
-            output += '[] ' + list[i].title + ' ' + list[i].dueDate + '\n';
+            if(list[i].completed == true){
+                output += '[x] ' + list[i].title + '\n'
+            }
+            else{
+                output += '[ ] ' + list[i].title +'\n'
         }
-    }
+
+}}
     return output;
-    
     
     // Format the To-Do list here, and return the output string
     // as per the format given above.
