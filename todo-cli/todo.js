@@ -58,10 +58,10 @@ const todoList = () => {
     n = list.length;
     for(i=0;i<n;i++){
         if(list[i].completed == true){
-        output += '[x] ' + list[i].title + ' ' + list[i].dueDate;
+        output += '[x] ' + list[i].title + ' ' + list[i].dueDate + '\n';
         }
         else{
-            output += '[] ' + list[i].title + ' ' + list[i].dueDate;
+            output += '[] ' + list[i].title + ' ' + list[i].dueDate + '\n';
         }
     }
     return output;
