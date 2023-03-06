@@ -9,7 +9,7 @@ const todoList = () => {
 
   const overdue = () => {
     let over = [];
-    let n = all.length()
+    let n = all.length
     for( let i =0; i<n ; i++){
         let d = all[i].dueDate;
         if (d == yesterday){
@@ -23,7 +23,7 @@ const todoList = () => {
 
   const dueToday = () => {
     let due = [];
-    let n = all.length()
+    let n = all.length
     for( let i =0; i<n ; i++){
         let d = all[i];
         if (d.dueDate == today){
@@ -39,7 +39,7 @@ const todoList = () => {
 
   const dueLater = () => {
     let late = [];
-    let n = all.length()
+    let n = all.length
     for( let i =0; i<n ; i++){
         let d = all[i];
         if (d.dueDate == tomorrow){
@@ -54,7 +54,7 @@ const todoList = () => {
 }
 
   const toDisplayableList = (list) => {
-    n = list.length();
+    n = list.length;
     for(i=0;i<n;i++){
         if(list[i].completed == true){
         console.log('[x] ' + list[i].title + ' ' + list[i].dueDate);
