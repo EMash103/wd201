@@ -70,6 +70,9 @@ const toDisplayableList = (list) => {
           output += '[ ] ' + list[i].title + '\n';
         }
       }
+      if(i !== n - 1) {
+      output += '\n';
+    }
     }
     return output;
   };
