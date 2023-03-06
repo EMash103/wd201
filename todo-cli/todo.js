@@ -63,7 +63,7 @@ const todoList = () => {
             console.log('[] ' + list[i].title + ' ' + list[i].dueDate);
         }
     }
-    return 
+    
     
     // Format the To-Do list here, and return the output string
     // as per the format given above.
