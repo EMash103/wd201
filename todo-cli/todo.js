@@ -22,17 +22,14 @@ const todoList = () => {
   }
 
   const dueToday = () => {
-    let due = [];
-    let n = all.length
-    for( let i =0; i<n ; i++){
-        let d = all[i];
-        if (d.dueDate == today){
-            delete d.dueDate;
-            due.push(d);
-        }
-
-    // Write the date check condition here and return the array
-    // of todo items that are due today accordingly.
+  let due = [];
+  let n = all.length
+  for( let i =0; i<n ; i++){
+      let d = all[i];
+      if (d.dueDate == today){
+          delete d.dueDate;
+          due.push(d);
+      }
   }
   return due;
 }
